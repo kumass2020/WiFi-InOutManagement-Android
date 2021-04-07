@@ -120,55 +120,67 @@ public class MainActivity extends Activity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = idEdt.getText().toString().trim();
-                String password = passwordEdt.getText().toString().trim();
-
-                // currentId 변수에 저장
-                currentId = id;
-
-                // POST 전송
-                JsonObject input = new JsonObject();
-
-                input.addProperty("id", id);
-                input.addProperty("pwd", password);
-
-                RetrofitConnection retrofitConnection = new RetrofitConnection();
-                retrofitConnection.server.login(input).enqueue(new Callback<JsonObject>() {
-
-                    @Override
-                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                        if(response.isSuccessful()) {
-                            if(response.code() == 200) {
-                                Toast.makeText(getApplicationContext(), "로그인 성공! Home Wi-Fi를 설정해주세요", Toast.LENGTH_SHORT).show();
-
-                                // 로그인 성공하면 안드로이드 키보드 숨김
-                                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                                inputMethodManager.hideSoftInputFromWindow(passwordEdt.getWindowToken(), 0);
-
-                                // SettingView에 등록된 Home Wi-Fi 목록과 검색된 Wi-Fi 목록 표시
-                                printWifiList();
-
-                                // SettingView 탭으로 이동
-                                tabHost.setCurrentTab(1);
-                            } else {
-                                Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
-                                currentId = "non-login";
-                            }
-                        }
-                        else {
-                            Log.d("loginTest", "onResponse - isSuccessful() false");
-                            Log.d("loginTest", "status: " + response.code());
-                            currentId = "non-login";
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<JsonObject> call, Throwable t) {
-                        Log.d("loginTest", "onFailure");
-                        Log.d("loginTest", t.toString());
-                    }
-
-                });
+                printWifiList();
+                tabHost.setCurrentTab(1);
+//                String id = idEdt.getText().toString().trim();
+//                String password = passwordEdt.getText().toString().trim();
+//
+//                // currentId 변수에 저장
+//                currentId = id;
+//
+//                // POST 전송
+//                JsonObject input = new JsonObject();
+//
+//                input.addProperty("id", id);
+//                input.addProperty("pwd", password);
+//
+//                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+//                inputMethodManager.hideSoftInputFromWindow(passwordEdt.getWindowToken(), 0);
+//
+//                RetrofitConnection retrofitConnection = new RetrofitConnection();
+//                retrofitConnection.server.login(input).enqueue(new Callback<JsonObject>() {
+//
+//                    @Override
+//                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//
+//                        // Test
+//                        boolean a = response.isSuccessful();
+//                        a = true;
+//                        int b = response.code();
+//                        b = 200;
+//
+//                        if(a) {
+//                            if(b == 200) {
+//                                Toast.makeText(getApplicationContext(), "로그인 성공! Home Wi-Fi를 설정해주세요", Toast.LENGTH_SHORT).show();
+//
+//                                // 로그인 성공하면 안드로이드 키보드 숨김
+//                                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+//                                inputMethodManager.hideSoftInputFromWindow(passwordEdt.getWindowToken(), 0);
+//
+//                                // SettingView에 등록된 Home Wi-Fi 목록과 검색된 Wi-Fi 목록 표시
+//                                printWifiList();
+//
+//                                // SettingView 탭으로 이동
+//                                tabHost.setCurrentTab(1);
+//                            } else {
+//                                Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
+//                                currentId = "non-login";
+//                            }
+//                        }
+//                        else {
+//                            Log.d("loginTest", "onResponse - isSuccessful() false");
+//                            Log.d("loginTest", "status: " + response.code());
+//                            currentId = "non-login";
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<JsonObject> call, Throwable t) {
+//                        Log.d("loginTest", "onFailure");
+//                        Log.d("loginTest", t.toString());
+//                    }
+//
+//                });
             }
         });
 
@@ -405,28 +417,28 @@ public class MainActivity extends Activity {
      */
     private void getNetworkInfo() {
 
-        RetrofitConnection retrofitConnection = new RetrofitConnection();
-        retrofitConnection.server.getNetwork().enqueue(new Callback<JsonObject>() {
-
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if(response.isSuccessful()) {
-                    Log.d("getTest", "onResponse() - isSuccessful() true");
-                    Log.d("getTest", "response.body(): " + response.body());
-                }
-                else {
-                    Log.d("getTest", "onResponse() - isSuccessful() false");
-                    Log.d("getTest", "response.body(): " + response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                Log.d("getTest", "onFailure()");
-                Log.d("getTest", t.toString());
-            }
-
-        });
+//        RetrofitConnection retrofitConnection = new RetrofitConnection();
+//        retrofitConnection.server.getNetwork().enqueue(new Callback<JsonObject>() {
+//
+//            @Override
+//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                if(response.isSuccessful()) {
+//                    Log.d("getTest", "onResponse() - isSuccessful() true");
+//                    Log.d("getTest", "response.body(): " + response.body());
+//                }
+//                else {
+//                    Log.d("getTest", "onResponse() - isSuccessful() false");
+//                    Log.d("getTest", "response.body(): " + response.body());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JsonObject> call, Throwable t) {
+//                Log.d("getTest", "onFailure()");
+//                Log.d("getTest", t.toString());
+//            }
+//
+//        });
 
     }
 
