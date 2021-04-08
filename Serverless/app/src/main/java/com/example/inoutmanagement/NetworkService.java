@@ -31,6 +31,7 @@ import retrofit2.Response;
 
 import static com.example.inoutmanagement.MainActivity.currentWifi;
 
+
 public class NetworkService extends Service {
 
     WifiManager wifiManager;
@@ -70,6 +71,8 @@ public class NetworkService extends Service {
                     // 디바이스의 Wi-Fi 연결 상태 가져오기
                     getWifiInformation();
 
+                    //Test
+                    System.out.println("test: " + wifiManager.getWifiState());
                     // 네트워크에 연결됐을 때 Wi-Fi 기능의 On/Off 상태 여부로 네트워크 판단
                     switch(wifiManager.getWifiState()) {
                         // Wi-Fi가 꺼져있거나 꺼지는 중이지만 네트워크가 연결된 경우 셀룰러 데이터로 연결된 경우라고 가정

@@ -120,8 +120,13 @@ public class MainActivity extends Activity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                printWifiList();
+
+                // Test
+                // 서버(로그인) 없이 다음 화면 진행
+
                 tabHost.setCurrentTab(1);
+                printWifiList();
+
 //                String id = idEdt.getText().toString().trim();
 //                String password = passwordEdt.getText().toString().trim();
 //
@@ -366,7 +371,11 @@ public class MainActivity extends Activity {
         }
         // 첫 실행이 아니면 WebView로 이동하고 네트워크 감지 시작
         else {
-            tabHost.setCurrentTab(2);
+
+            // Test
+            tabHost.setCurrentTab(1);
+//            tabHost.setCurrentTab(2);
+
             startNetworkDetection();
         }
     }
