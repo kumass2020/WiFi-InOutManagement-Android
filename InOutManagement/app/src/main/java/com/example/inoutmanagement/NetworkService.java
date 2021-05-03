@@ -71,7 +71,7 @@ public class NetworkService extends Service {
                     getWifiInformation();
 
                     // 네트워크에 연결됐을 때 Wi-Fi 기능의 On/Off 상태 여부로 네트워크 판단
-                    switch(wifiManager.getWifiState()) {
+                    switch (wifiManager.getWifiState()) {
                         // Wi-Fi가 꺼져있거나 꺼지는 중이지만 네트워크가 연결된 경우 셀룰러 데이터로 연결된 경우라고 가정
                         case WifiManager.WIFI_STATE_DISABLED:
                         case WifiManager.WIFI_STATE_DISABLING:
@@ -82,14 +82,14 @@ public class NetworkService extends Service {
                         // Wi-Fi가 켜져있는 경우
                         case WifiManager.WIFI_STATE_ENABLED: {
                             // 연결중이던 Wi-Fi가 신호 세기가 약해져서 셀룰러 데이터로 연결된 경우
-                            if(currentWifi.getRssi() < -80) {
+                            if (currentWifi.getRssi() < -80) {
                                 createNotification("네트워크 알림", "외출: 셀룰러 데이터로 연결되었습니다.");
                                 sendWifiStatus();
                             }
                             // Wi-Fi 세기가 충분한 경우
                             else {
                                 // 연결된 Wi-Fi가 Home Wi-Fi인 경우
-                                if(isHomeWifi(currentWifi.getBSSID())) {
+                                if (isHomeWifi(currentWifi.getBSSID())) {
                                     createNotification("네트워크 알림", "귀가: Wi-fi(" + currentWifi.getSSID() + ")로 연결되었습니다.");
                                     sendWifiStatus();
                                 }
@@ -107,6 +107,28 @@ public class NetworkService extends Service {
                             createNotification("네트워크 알림", "오류가 발생하였습니다.");
                     }
                 }
+
+                @Override
+                public void onLost(Network network) {
+                    // 디바이스의 Wi-Fi 연결 상태 가져오기
+                    getWifiInformation();
+
+                    //Test
+                    System.out.println("test: " + wifiManager.getWifiState());
+                    // 네트워크에 연결됐을 때 Wi-Fi 기능의 On/Off 상태 여부로 네트워크 판단
+                    switch(wifiManager.getWifiState()) {
+                        // Wi-Fi가 꺼져있거나 꺼지는 중이지만 네트워크가 연결된 경우 셀룰러 데이터로 연결된 경우라고 가정
+                        case WifiManager.WIFI_STATE_DISABLED:
+                        case WifiManager.WIFI_STATE_DISABLING:
+                            createNotification("네트워크 알림", "오류: 인터넷 연결이 유실되었습니다.");
+                            sendWifiStatus();
+                            break;
+
+                        default:
+                            createNotification("네트워크 알림", "오류가 발생하였습니다.");
+                    }
+                }
+
             };
 
             cm.registerNetworkCallback(builder.build(), networkCallback);
