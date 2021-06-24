@@ -14,7 +14,8 @@ public class RetrofitConnection {
 
     // Test URL(Loopback or local network)
 //    String URL = "http://172.30.1.23:40012";
-    String URL = "http://192.9.45.211:40012";
+//    String URL = "http://192.9.45.211:40012";
+    String URL = "192.168.0.4:40012";
 
     // Server URL(내부)
 //    String URL = "http://192.9.45.226:40006/";
