@@ -19,7 +19,8 @@ public interface RetrofitInterface {
     Call<JsonObject> getNetwork();
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST("getcheck/wifi")
+//    @POST("getcheck/wifi")
+    @POST("test/wifi")
     Call<JsonObject> changeNetwork(@Body JsonObject data);
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})

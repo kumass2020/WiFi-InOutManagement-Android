@@ -120,12 +120,13 @@ public class NetworkService extends Service {
                         // Wi-Fi가 꺼져있거나 꺼지는 중이지만 네트워크가 연결된 경우 셀룰러 데이터로 연결된 경우라고 가정
                         case WifiManager.WIFI_STATE_DISABLED:
                         case WifiManager.WIFI_STATE_DISABLING:
-                            createNotification("네트워크 알림", "오류: 인터넷 연결이 유실되었습니다.");
+//                            createNotification("네트워크 알림", "오류: 인터넷 연결이 유실되었습니다.");
+                            createNotification("네트워크 알림", "외출: 셀룰러 데이터로 연결되었습니다.");
                             sendWifiStatus();
                             break;
 
                         default:
-                            createNotification("네트워크 알림", "오류가 발생하였습니다.");
+//                            createNotification("네트워크 알림", "오류가 발생하였습니다.");
                     }
                 }
 
