@@ -44,19 +44,13 @@
                         android:id="@+id/idEdt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="id" />
-
-                    <EditText
-                        android:id="@+id/passwordEdt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="password" />
+                        android:hint="name" />
 
                     <Button
                         android:id="@+id/loginBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="로그인" />
+                        android:text="login" />
 
                 </LinearLayout>
 

@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 
         // LoginView
         idEdt = findViewById(R.id.idEdt);
-        passwordEdt = findViewById(R.id.passwordEdt);
+//        passwordEdt = findViewById(R.id.passwordEdt);
         loginBtn = findViewById(R.id.loginBtn);
 
         // SettingView
@@ -121,7 +121,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String id = idEdt.getText().toString().trim();
-                String password = passwordEdt.getText().toString().trim();
+//                String password = passwordEdt.getText().toString().trim();
+                String password = "";
 
                 // currentId 변수에 저장
                 currentId = id;
@@ -143,7 +144,7 @@ public class MainActivity extends Activity {
 
                                 // 로그인 성공하면 안드로이드 키보드 숨김
                                 InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                                inputMethodManager.hideSoftInputFromWindow(passwordEdt.getWindowToken(), 0);
+                                inputMethodManager.hideSoftInputFromWindow(idEdt.getWindowToken(), 0);
 
                                 // SettingView에 등록된 Home Wi-Fi 목록과 검색된 Wi-Fi 목록 표시
                                 printWifiList();
