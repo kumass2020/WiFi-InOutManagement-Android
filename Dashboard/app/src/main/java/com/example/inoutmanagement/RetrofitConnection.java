@@ -17,7 +17,8 @@ public class RetrofitConnection {
 //    String URL = "http://192.9.45.211:40012";
 //    String URL = "192.168.0.4:40012";
 //    String URL = "http://172.30.1.24:40012";
-    String URL = "http://192.9.45.135:40012";
+//    String URL = "http://192.9.45.135:40012";
+    String URL = "http://221.148.21.221:40012";
 
     // Server URL(내부)
 //    String URL = "http://192.9.45.226:40006/";
